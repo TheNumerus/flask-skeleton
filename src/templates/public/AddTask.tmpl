@@ -1,0 +1,16 @@
+{% from "macros/fields.tmpl" import render_input_field, render_submit %}
+{% extends "shared/layout.tmpl" %}
+
+{% block title %}Add task.{% endblock %}
+
+{% block content %}
+  <h3>Add task</h3>
+  <div class="form-group">Add new task here.</div>
+  <form method="POST" id='insert-form'>
+    {{ form.hidden_tag() }}
+    {{ render_input_field(form.name) }}
+    {{ render_input_field(form.description) }}
+    {{ render_input_field(form.deadline) }}
+    {{ render_submit() }}
+  </form>
+{% endblock %}

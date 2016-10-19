@@ -38,3 +38,15 @@ class LogUserForm(Form):
     ])
     pohlavi = BooleanField('Pohlavi')
 
+
+class AddTaskForm(Form):
+
+    name = TextField('Set name of the task', validators=[
+        Length(max=30, message="Please don't use more than 30 characters"),
+        InputRequired(message="You can't leave this empty")
+    ])
+    description = TextField('You can add description', validators=[
+        Length(min=6, max=100, message="Please don't use more than 100 characters"),
+    ])
+    deadline = DateTimeField('Add deadline')
+
