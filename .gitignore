@@ -11,6 +11,7 @@ src/web/static/css/bundle.min.css
 # Project environment variables
 src/.env
 .env
+.idea/**
 
 # Logs and databases #
 *.log
