@@ -1,7 +1,7 @@
 import re
 
 from flask_wtf import Form
-from wtforms.fields import BooleanField, TextField, PasswordField, DateTimeField
+from wtforms.fields import BooleanField, TextField, PasswordField, DateField
 from wtforms.validators import EqualTo, Email, InputRequired, Length
 
 from ..data.models import User, LogUser
@@ -41,12 +41,11 @@ class LogUserForm(Form):
 
 class AddTaskForm(Form):
 
-    name = TextField('Set name of the task', validators=[
+    TaskName = TextField('Set name of the task', validators=[
         Length(max=30, message="Please don't use more than 30 characters"),
         InputRequired(message="You can't leave this empty")
     ])
-    description = TextField('You can add description', validators=[
+    Description = TextField('You can add description', validators=[
         Length(min=6, max=100, message="Please don't use more than 100 characters"),
     ])
-    deadline = DateTimeField('Add deadline')
 

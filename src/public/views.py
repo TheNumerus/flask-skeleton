@@ -2,9 +2,9 @@
 Logic for dashboard related routes
 """
 from flask import Blueprint, render_template
-from .forms import LogUserForm,AddTaskForm
+from .forms import LogUserForm, AddTaskForm
 from ..data.database import db
-from ..data.models import LogUser
+from ..data.models import LogUser, Task
 blueprint = Blueprint('public', __name__)
 
 @blueprint.route('/', methods=['GET'])
@@ -23,9 +23,9 @@ def ListuserLog():
     pole = db.session.query(LogUser).all()
     return render_template("public/listuser.tmpl",data = pole)
 
-@blueprint.route('/addtask',methods=['GET'])
+@blueprint.route('/addtask',methods=['GET','POST'])
 def AddTaskLog():
     form = AddTaskForm()
     if form.validate_on_submit():
-        LogUser.create(**form.data)
+        Task.create(**form.data)
     return render_template("public/AddTask.tmpl", form=form)
