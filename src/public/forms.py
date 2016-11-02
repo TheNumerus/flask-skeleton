@@ -46,6 +46,6 @@ class AddTaskForm(Form):
         InputRequired(message="You can't leave this empty")
     ])
     Description = TextField('You can add description', validators=[
-        Length(min=6, max=100, message="Please don't use more than 100 characters"),
+        Length(max=100, message="Please don't use more than 100 characters"),
     ])
 
